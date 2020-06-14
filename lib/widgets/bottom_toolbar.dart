@@ -39,17 +39,24 @@ class BottomToolbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Icon(TikTokIcons.home, color: Colors.white, size: NavigationIconSize),
-        Icon(TikTokIcons.search,
-            color: Colors.white, size: NavigationIconSize),
-        customCreateIcon,
-        Icon(TikTokIcons.messages,
-            color: Colors.white, size: NavigationIconSize),
-        Icon(TikTokIcons.profile,
-            color: Colors.white, size: NavigationIconSize)
+    return Column(
+      children: <Widget>[
+        SizedBox(height: 10,),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(TikTokIcons.home, color: Colors.white, size: NavigationIconSize),
+            Icon(TikTokIcons.search,
+                color: Colors.white, size: NavigationIconSize),
+            customCreateIcon,
+            Icon(TikTokIcons.messages,
+                color: Colors.white, size: NavigationIconSize),
+            Icon(TikTokIcons.profile,
+                color: Colors.white, size: NavigationIconSize)
+          ],
+        ),
+        SizedBox(height: 10,)
+
       ],
     );
   }
