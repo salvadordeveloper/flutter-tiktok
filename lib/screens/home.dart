@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:tiktok_flutter/models/video.dart';
 import 'package:tiktok_flutter/widgets/actions_toolbar.dart';
 import 'package:tiktok_flutter/widgets/bottom_toolbar.dart';
 import 'package:tiktok_flutter/widgets/video_description.dart';
 import 'package:video_player/video_player.dart';
+import 'package:tiktok_flutter/data/firebaseData.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -14,42 +16,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-   var listVideos= [];
-  List<VideoPlayerController> _controllers = [];
+  
+  var listVideos= <Video>[];
   var prevPage = 0;
 
    @override
   void initState() {
     super.initState();
-    getVideoList();
+    getVideos();
   }
 
-  addVideo(video){
-    listVideos.add(video);
-    _controllers.add(setupVideo(video['url']));
+  getVideos() async {
+    var videos = await getVideoList();
+    videos.forEach((element) => element.setupVideo());
+
+    setState(() {
+      listVideos = videos;
+    });
+
   }
 
-  VideoPlayerController setupVideo(url){
-      VideoPlayerController controller;
-      controller = VideoPlayerController.network(url)
-      ..initialize().then((_) {
-        setState(() {
-            controller.setLooping(true);
-        });
-      });
-      return controller;
-  }
-  
-  Future getVideoList() async {
-    Map<dynamic, dynamic> values = await (await FirebaseDatabase.instance.reference().child("videos").once()).value;
-    values.forEach((key, video) {
-      setState(() {
-          addVideo(video);
-          print(video['url']);
-      });
-    });  
-  }
-  
   Widget get topSection => Container(
       height: 100.0,
       padding: EdgeInsets.only(bottom: 15.0),
@@ -68,9 +54,8 @@ class _HomeState extends State<Home> {
           ]),
     );
 
-
-
-  Widget videoViewer(){return Container(
+  Widget videoViewer(){
+    return Container(
      child: Center(
       child: listVideos.length > 0 ? CarouselSlider.builder(
         options: CarouselOptions(
@@ -83,8 +68,8 @@ class _HomeState extends State<Home> {
 
         onPageChanged: (index, reason) {
             setState(() {
-              _controllers[prevPage].pause();
-              _controllers[index].play();
+              listVideos[prevPage].controller.pause();
+              listVideos[index].controller.play();
               prevPage = index;
             });
         },
@@ -98,8 +83,9 @@ class _HomeState extends State<Home> {
   }
 
   Widget videoCard(item){
-    var controller = _controllers[item];
-
+    var video = listVideos[item];
+    var controller = video.controller;
+    if(controller != null){
     return Stack(
       alignment: Alignment.bottomCenter,
       children: <Widget>[ 
@@ -128,14 +114,16 @@ class _HomeState extends State<Home> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              VideoDescription(),
-              ActionsToolbar(),
+                VideoDescription(video.user,video.videoTitle,video.songName),
+                ActionsToolbar(video.likes,video.comments,video.userPic),
               ],
           ),
           SizedBox(height: 10,)
         ],)
       ],
     );
+    }
+    return CircularProgressIndicator();
   }
 
   Widget get middleSection => Expanded(

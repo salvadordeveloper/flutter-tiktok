@@ -18,16 +18,22 @@ class ActionsToolbar extends StatelessWidget {
 // The size of the plus icon under the profile image in follow action
   static const double PlusIconSize = 20.0;
 
+  String numLikes;
+  String numComments;
+  String userPic;
+
+  ActionsToolbar(this.numLikes,this.numComments,this.userPic);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 100.0,
       child: Column(mainAxisSize: MainAxisSize.min, children: [
-        _getFollowAction(),
-        _getSocialAction(icon: TikTokIcons.heart, title: '3.2m'),
-        _getSocialAction(icon: TikTokIcons.chat_bubble, title: '16.4k'),
+        _getFollowAction(pictureUrl: userPic),
+        _getSocialAction(icon: TikTokIcons.heart, title: numLikes),
+        _getSocialAction(icon: TikTokIcons.chat_bubble, title: numComments),
         _getSocialAction(icon: TikTokIcons.reply, title: 'Share', isShare: true),
-        _getMusicPlayerAction()
+        _getMusicPlayerAction(userPic)
       ]),
     );
   }
@@ -52,7 +58,7 @@ class ActionsToolbar extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 10.0),
         width: 60.0,
         height: 60.0,
-        child: Stack(children: [_getProfilePicture(), _getPlusIcon()]));
+        child: Stack(children: [_getProfilePicture(pictureUrl), _getPlusIcon()]));
   }
 
   Widget _getPlusIcon() {
@@ -69,7 +75,7 @@ class ActionsToolbar extends StatelessWidget {
           child: Icon(Icons.add, color: Colors.white, size: 20.0, )),);
  }
 
- Widget _getProfilePicture() {
+ Widget _getProfilePicture(userPic) {
    return Positioned(
      left: (ActionWidgetSize / 2) - (ProfileImageSize / 2),
      child: Container(
@@ -81,11 +87,14 @@ class ActionsToolbar extends StatelessWidget {
           borderRadius: BorderRadius.circular(ProfileImageSize / 2)
         ),
         // import 'package:cached_network_image/cached_network_image.dart'; at the top to use CachedNetworkImage
-        child: CachedNetworkImage(
-          imageUrl: "https://secure.gravatar.com/avatar/ef4a9338dca42372f15427cdb4595ef7",
-          placeholder: (context, url) => new CircularProgressIndicator(),
-          errorWidget: (context, url, error) => new Icon(Icons.error),
-      ))
+        child:
+        ClipRRect(borderRadius: BorderRadius.circular(10000.0),
+          child:  CachedNetworkImage(
+              imageUrl: userPic,
+              placeholder: (context, url) => new CircularProgressIndicator(),
+              errorWidget: (context, url, error) => new Icon(Icons.error),
+            ))
+     )
     );
  }
 
@@ -101,7 +110,7 @@ class ActionsToolbar extends StatelessWidget {
         end: Alignment.topRight
       );
 
-  Widget _getMusicPlayerAction() {
+  Widget _getMusicPlayerAction(userPic) {
    return Container(
         margin: EdgeInsets.only(top: 10.0),
         width: ActionWidgetSize, 
@@ -115,10 +124,13 @@ class ActionsToolbar extends StatelessWidget {
               gradient: musicGradient,
               borderRadius: BorderRadius.circular(ProfileImageSize / 2)
             ),
-            child: CachedNetworkImage(
-              imageUrl: "https://secure.gravatar.com/avatar/ef4a9338dca42372f15427cdb4595ef7",
-              placeholder: (context, url) => new CircularProgressIndicator(),
-              errorWidget: (context, url, error) => new Icon(Icons.error),
+            child: 
+              ClipRRect(borderRadius: BorderRadius.circular(10000.0),
+                child: CachedNetworkImage(
+                  imageUrl: userPic,
+                  placeholder: (context, url) => new CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => new Icon(Icons.error),
+              )
           ),
           ),
           

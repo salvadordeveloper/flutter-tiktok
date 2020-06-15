@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 class VideoDescription extends StatelessWidget {
+
+  var username;
+  var videtoTitle;
+  var songInfo; 
+
+  VideoDescription(this.username,this.videtoTitle,this.songInfo);
+
   @override
   Widget build(BuildContext context) {
   return Expanded(
@@ -13,11 +20,11 @@ class VideoDescription extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: <Widget>[
-          Text('@firstjonny', style: TextStyle(fontWeight: FontWeight.bold),),
-          Text('Video title and some other stuff'),
+          Text('@'+username, style: TextStyle(fontWeight: FontWeight.bold),),
+          Text(videtoTitle),
           Row(children: [
           Icon(Icons.music_note,  size: 15.0, color: Colors.white,),
-          Text('Artist name - Album name - song', style: TextStyle(fontSize: 12.0))]),
+          Text(songInfo, style: TextStyle(fontSize: 12.0))]),
         ])
       )
     );
