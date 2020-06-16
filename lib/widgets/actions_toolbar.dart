@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_flutter/utils/tik_tok_icons_icons.dart';
+import 'package:tiktok_flutter/widgets/circle_image_animation.dart';
 
 class ActionsToolbar extends StatelessWidget {
   // Full dimensions of an action
@@ -33,7 +34,9 @@ class ActionsToolbar extends StatelessWidget {
         _getSocialAction(icon: TikTokIcons.heart, title: numLikes),
         _getSocialAction(icon: TikTokIcons.chat_bubble, title: numComments),
         _getSocialAction(icon: TikTokIcons.reply, title: 'Share', isShare: true),
-        _getMusicPlayerAction(userPic)
+        CircleImageAnimation(
+          child: _getMusicPlayerAction(userPic),
+        )
       ]),
     );
   }
@@ -124,16 +127,15 @@ class ActionsToolbar extends StatelessWidget {
               gradient: musicGradient,
               borderRadius: BorderRadius.circular(ProfileImageSize / 2)
             ),
-            child: 
-              ClipRRect(borderRadius: BorderRadius.circular(10000.0),
+            child:  ClipRRect(borderRadius: BorderRadius.circular(10000.0),
                 child: CachedNetworkImage(
                   imageUrl: userPic,
                   placeholder: (context, url) => new CircularProgressIndicator(),
                   errorWidget: (context, url, error) => new Icon(Icons.error),
               )
-          ),
+            )
           ),
           
-          ]));
+      ]));
   }
 }

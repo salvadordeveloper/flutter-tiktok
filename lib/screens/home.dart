@@ -34,6 +34,7 @@ class _HomeState extends State<Home> {
       listVideos = videos;
     });
 
+    listVideos[0].controller.play();
   }
 
   Widget get topSection => Container(
@@ -63,7 +64,7 @@ class _HomeState extends State<Home> {
         height: MediaQuery.of(context).size.height,
         enlargeCenterPage: false,
         viewportFraction: 1.0,
-        initialPage: 0,
+        initialPage: 7,
         scrollDirection: Axis.vertical,
 
         onPageChanged: (index, reason) {
@@ -118,7 +119,7 @@ class _HomeState extends State<Home> {
                 ActionsToolbar(video.likes,video.comments,video.userPic),
               ],
           ),
-          SizedBox(height: 10,)
+          SizedBox(height: 65,)
         ],)
       ],
     );
@@ -134,6 +135,7 @@ class _HomeState extends State<Home> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         topSection,
+        BottomToolbar(),
       ],
     );
   } 
@@ -147,7 +149,6 @@ class _HomeState extends State<Home> {
             Column(
               children: <Widget>[
                 middleSection,
-                BottomToolbar(),
               ],
             ),
           screenUI()

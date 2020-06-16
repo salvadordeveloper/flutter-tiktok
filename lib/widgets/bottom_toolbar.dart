@@ -41,22 +41,32 @@ class BottomToolbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(height: 10,),
+        SizedBox(height: 1,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Icon(TikTokIcons.home, color: Colors.white, size: NavigationIconSize),
-            Icon(TikTokIcons.search,
-                color: Colors.white, size: NavigationIconSize),
+            MenuButton('Home',Icon(TikTokIcons.home, color: Colors.white, size: NavigationIconSize)),
+            MenuButton('Search',Icon(TikTokIcons.search,
+                color: Colors.white, size: NavigationIconSize)),
             customCreateIcon,
-            Icon(TikTokIcons.messages,
-                color: Colors.white, size: NavigationIconSize),
-            Icon(TikTokIcons.profile,
-                color: Colors.white, size: NavigationIconSize)
+            MenuButton('Messages',Icon(TikTokIcons.messages,
+                color: Colors.white, size: NavigationIconSize)),
+            MenuButton('Profile',Icon(TikTokIcons.profile,
+                color: Colors.white, size: NavigationIconSize))
           ],
         ),
         SizedBox(height: 10,)
 
+      ],
+    );
+  }
+
+  Widget MenuButton(String text, Widget icon){
+    return Column(
+      children: <Widget>[
+        icon,
+        SizedBox(height: 7,),
+        Text(text,style: TextStyle(color: Colors.white, fontSize: 11.0),)
       ],
     );
   }
