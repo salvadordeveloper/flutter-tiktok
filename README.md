@@ -1,21 +1,58 @@
-<<<<<<< HEAD
-# tiktok_flutter
+# TikTok Flutter
 
-A new Flutter project.
+Clone of TikTok with Flutter and Firebase.
 
-## Getting Started
+## Preview
 
-This project is a starting point for a Flutter application.
+-Image -Image
 
-A few resources to get you started if this is your first Flutter project:
+Video Demo: https://youtu.be/sMKg6ILYgv0 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Caracteristics 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# TikTok-Flutter
-A Basic Clone of Tik Tok in Flutter with Firebase.
->>>>>>> 110517d98b51d693595bd86b396b9330c77890bd
+-TikTok UI                                 
+-Swipe Videos                                                            
+-Dynamic Video Data Source                                                                  
+-User Data (Name, Image)  
+-Animations(Image rotation)  
+
+## Libraries
+-video_player.   
+-firebase_database.   
+-carousel_slider (To obtain the swipe effect).    
+-cached_network_image
+
+## Installation
+
+1.-Clone or download this repository 
+
+2.-Config your Firebase instance and replace the google-service.json in android/app/ or ios/Runner
+
+3.-Config flutter project : 
+
+```bash
+flutter pug get
+```
+
+## Database
+
+The app obtains the data from a Realtime Database and Firebase Storage, in reality, you can use the server that you want, only need's an API that returns a JSON in this format.
+
+
+-Image
+
+This is the link of template JSON to import the data in your firebase instance. 
+
+-image
+
+I use Firebase Storage for videos and Profile Pic's, but you can set the URL to any server that you want.
+
+-Image
+
+
+## TODO
+
+-Likes.   
+-Comments.   
+-System of User (Register, Login, Profile Screen).   
+-Upload Videos from the app
