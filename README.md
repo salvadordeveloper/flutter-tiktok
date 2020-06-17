@@ -41,15 +41,15 @@ flutter pug get
 The app obtains the data from a Realtime Database and Firebase Storage, in reality, you can use the server that you want, only need's an API that returns a JSON in this format.
 
 
-<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Database.png" alt="drawing" width="200"/>
+<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Database.png" alt="drawing" width="500"/>
 
 This is the link of template JSON to import the data in your firebase instance. 
 
-<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Storage.png" alt="drawing" width="200"/>
+[JSON File](https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/data/videoList.json)
 
 I use Firebase Storage for videos and Profile Pic's, but you can set the URL to any server that you want.
 
--Image
+<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Storage.png" alt="drawing" width="700"/>
 
 
 ## TODO
