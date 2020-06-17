@@ -4,6 +4,8 @@ Clone of TikTok with Flutter and Firebase.
 
 ## Preview
 
+<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Database.png" alt="drawing" width="200"/>
+
 -Image -Image
 
 Video Demo: https://youtu.be/sMKg6ILYgv0 
@@ -39,11 +41,11 @@ flutter pug get
 The app obtains the data from a Realtime Database and Firebase Storage, in reality, you can use the server that you want, only need's an API that returns a JSON in this format.
 
 
--Image
+<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Database.png" alt="drawing" width="200"/>
 
 This is the link of template JSON to import the data in your firebase instance. 
 
--image
+<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Storage.png" alt="drawing" width="200"/>
 
 I use Firebase Storage for videos and Profile Pic's, but you can set the URL to any server that you want.
 
