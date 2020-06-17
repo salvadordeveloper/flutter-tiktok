@@ -1,35 +1,42 @@
 {
   "project_info": {
-    "project_number": "1056368531353",
-    "firebase_url": "https://testvideo-91d3a.firebaseio.com",
-    "project_id": "testvideo-91d3a",
-    "storage_bucket": "testvideo-91d3a.appspot.com"
+    "project_number": "655078518888",
+    "firebase_url": "https://videostreaming-test.firebaseio.com",
+    "project_id": "videostreaming-test",
+    "storage_bucket": "videostreaming-test.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1056368531353:android:0f8371ee068bf8b33c2508",
+        "mobilesdk_app_id": "1:655078518888:android:5713f529d8125748d88bdd",
         "android_client_info": {
           "package_name": "com.example.tiktok_flutter"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1056368531353-p8gfk0ht9ntbtaikabcmeumu9oph0agc.apps.googleusercontent.com",
+          "client_id": "655078518888-3iclnklgj2f8s9hrn9bnoj6ueb23oatf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD8tMk5Ln0KbWt5guhUu4Zuu9jRJZotrW0"
+          "current_key": "AIzaSyDrn73EkDczZy774VHQnblKpNzEC3cOd8Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1056368531353-p8gfk0ht9ntbtaikabcmeumu9oph0agc.apps.googleusercontent.com",
+              "client_id": "655078518888-3iclnklgj2f8s9hrn9bnoj6ueb23oatf.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "655078518888-cgv4b056lm9brkphtph3q3tv0lecah0h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.video.streaming"
+              }
             }
           ]
         }
@@ -37,28 +44,35 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1056368531353:android:b1f896d40a80265e3c2508",
+        "mobilesdk_app_id": "1:655078518888:android:833007bcf68f2769d88bdd",
         "android_client_info": {
           "package_name": "com.example.video"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1056368531353-p8gfk0ht9ntbtaikabcmeumu9oph0agc.apps.googleusercontent.com",
+          "client_id": "655078518888-3iclnklgj2f8s9hrn9bnoj6ueb23oatf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD8tMk5Ln0KbWt5guhUu4Zuu9jRJZotrW0"
+          "current_key": "AIzaSyDrn73EkDczZy774VHQnblKpNzEC3cOd8Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1056368531353-p8gfk0ht9ntbtaikabcmeumu9oph0agc.apps.googleusercontent.com",
+              "client_id": "655078518888-3iclnklgj2f8s9hrn9bnoj6ueb23oatf.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "655078518888-cgv4b056lm9brkphtph3q3tv0lecah0h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.video.streaming"
+              }
             }
           ]
         }
