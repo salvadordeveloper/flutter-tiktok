@@ -5,6 +5,10 @@ class BottomToolbar extends StatelessWidget {
   static const double NavigationIconSize = 20.0;
   static const double CreateButtonWidth = 38.0;
 
+  Function deleteHistory;
+
+  BottomToolbar(this.deleteHistory);
+
   Widget get customCreateIcon => Container(
           width: 45.0, 
           height: 27.0,
@@ -62,12 +66,17 @@ class BottomToolbar extends StatelessWidget {
   }
 
   Widget MenuButton(String text, Widget icon){
-    return Column(
+    return GestureDetector(
+      onTap: ()=>{
+        deleteHistory()        
+      },
+      child : Column(
       children: <Widget>[
         icon,
         SizedBox(height: 7,),
         Text(text,style: TextStyle(color: Colors.white, fontSize: 11.0),)
       ],
+      )
     );
   }
 }

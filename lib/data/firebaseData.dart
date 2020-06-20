@@ -6,26 +6,45 @@ Future<List<Video>> getVideoListForUser(String userId) async {
 
   var videoList = <Video>[];
 
-  //Get UserID By Username
-  var user = (await Firestore.instance.collection("Users").where("username", isEqualTo: userId).getDocuments()).documents[0];
+  var videos = await Firestore.instance.collection("Videos").document("AllVideos").collection("VideoList").getDocuments();
 
-  //Get List of Video ID's for the feed 
-  var videosUser = await Firestore.instance.collection("Users").document(user.documentID).collection("VideoList").getDocuments();
-  
-  //Get videos from main list
-  await Future.wait(videosUser.documents.map((element) async{
-    var id = element.data['id'];
-    var videoData = (await Firestore.instance.collection("Videos").document("AllVideos").collection("VideoList").where("id",isEqualTo: id).getDocuments()).documents[0];
-    Video video = Video.fromJson(videoData.data);
+  videos.documents.forEach((element) {
+    Video video = Video.fromJson(element.data);
     videoList.add(video);
+  });
 
-  }));
+  var userData = await Firestore.instance.collection("Users").where("username",isEqualTo: userId).getDocuments();
 
-  return videoList;
+  var videosViewed = userData.documents[0].data['videosViewed'];
+
+  Map<String, bool> videosV = Map();
+
+  videosViewed.forEach((video){
+    videosV[video] = true;
+  });
+
+  var filteredVideos = <Video>[];
+
+  videoList.forEach((element) {
+    if(videosV[element.id] == null || videosV[element.id] == false){
+      filteredVideos.add(element);
+    }
+  });
+
+  return filteredVideos;
 }
 
-Future<bool> removeVideoFromFeed(String userId, String videoId) async{
-  await Firestore.instance.collection("Users").document(userId).collection("VideoList").document(videoId).delete();
+Future<bool> removeVideosFromFeed(String userId, List<String> videoIds) async{
+  await Firestore.instance.collection('Users').document(userId).updateData({"videosViewed": FieldValue.arrayUnion(videoIds)});
+  return true;
+}
+
+
+Future<bool> clearHistory(String userId) async{
+  var user = await Firestore.instance.collection('Users').document(userId).get();
+  var listToRemove = user.data['videosViewed'];
+  await Firestore.instance.collection('Users').document(userId).updateData({"videosViewed": FieldValue.arrayRemove(listToRemove)});
+  
   return true;
 }
 

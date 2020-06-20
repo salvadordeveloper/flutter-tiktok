@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
   
   var listVideos= <Video>[];
   var prevPage = 0;
-  List<VideoPlayerController> _controllers = [];
+  List<VideoPlayerController> _controllers;
 
    @override
   void initState() {
@@ -30,12 +30,28 @@ class _HomeState extends State<Home> {
 
     setState(() {
       listVideos = videos;
-      listVideos.forEach((element) {
-         _controllers.add(getController(element.url));
-      });
+      _controllers = List<VideoPlayerController>(listVideos.length);
+      loadVideo(0);      
     }); 
     if(_controllers.length > 0)
       _controllers[0].play();
+  }
+
+  loadVideo(index){
+    if(_controllers[index] == null){
+      setState(() {
+        _controllers[index] = getController(listVideos[index].url);
+      });
+    }
+  }
+
+  disposeVideo(index){
+    if(index >= 0){
+      if(_controllers[index] != null)
+        _controllers[index].dispose();
+        _controllers[index] = null;
+    }
+   
   }
 
   VideoPlayerController getController(url){
@@ -80,6 +96,8 @@ class _HomeState extends State<Home> {
         onPageChanged: (index){
           index = index % (listVideos.length);
           _controllers[prevPage].pause();
+          disposeVideo(prevPage-1);
+          loadVideo(index);
           _controllers[index].play();
           prevPage = index;
           print(index);
@@ -98,19 +116,17 @@ class _HomeState extends State<Home> {
   Widget videoCard(index){
     var video = listVideos[index];
     var controller = _controllers[index];
-    if(controller != null){
-      return Stack(
+    return Stack(
       alignment: Alignment.bottomCenter,
       children: <Widget>[ 
+        controller != null && controller.value.initialized ? 
         GestureDetector(
           onTap: () {
               controller.value.isPlaying
                 ? controller.pause()
                 : controller.play();
-            
-
           },
-          child: controller.value.initialized ?
+          child:
             SizedBox.expand(
               child: FittedBox(
                 fit: BoxFit.cover,
@@ -121,8 +137,11 @@ class _HomeState extends State<Home> {
                 ),
               )
             )
-            : CircularProgressIndicator()
-        ),
+        ) : Column(mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+          LinearProgressIndicator(),
+          SizedBox(height: 56,)
+        ],),
         Column(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
           Row(
             mainAxisSize: MainAxisSize.max,
@@ -136,8 +155,6 @@ class _HomeState extends State<Home> {
         ],)
       ],
     );
-    }
-    return CircularProgressIndicator();
   }
 
   Widget get middleSection => Expanded(
@@ -148,7 +165,7 @@ class _HomeState extends State<Home> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         topSection,
-        BottomToolbar(),
+        BottomToolbar(clearHistory),
       ],
     );
   } 
@@ -168,5 +185,15 @@ class _HomeState extends State<Home> {
         ]
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controllers.forEach((element) {
+      if(element != null){
+        element.dispose();
+      }
+    });
+    super.dispose();
   }
 }

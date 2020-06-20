@@ -1,6 +1,7 @@
 import 'package:video_player/video_player.dart';
 
 class Video {
+  String id;
   String user;
   String userPic;
   String videoTitle;
@@ -11,7 +12,8 @@ class Video {
 
   VideoPlayerController controller;
 
-  Video({this.user,
+  Video({this.id,
+      this.user,
       this.userPic,
       this.videoTitle,
       this.songName,
@@ -20,6 +22,7 @@ class Video {
       this.url});
 
   Video.fromJson(Map<dynamic, dynamic> json) {
+    id = json['id'];
     user = json['user'];
     userPic = json['user_pic'];
     videoTitle = json['video_title'];
@@ -31,6 +34,7 @@ class Video {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
     data['user'] = this.user;
     data['user_pic'] = this.userPic;
     data['video_title'] = this.videoTitle;
