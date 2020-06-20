@@ -17,11 +17,7 @@ class Video {
       this.songName,
       this.likes,
       this.comments,
-      this.url}){
-      
-      
-
-  }
+      this.url});
 
   Video.fromJson(Map<dynamic, dynamic> json) {
     user = json['user'];
@@ -46,11 +42,9 @@ class Video {
   }
 
   setupVideo(){
-      print('hla');
-
-      controller = VideoPlayerController.network(url)
-      ..initialize().then((_) {
-        controller.setLooping(true);
-      });
+    controller = VideoPlayerController.network(url)
+    ..initialize().then((_) {
+      controller.setLooping(true);
+    });
   }
 }

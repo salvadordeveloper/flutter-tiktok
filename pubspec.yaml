@@ -32,6 +32,7 @@ dependencies:
   video_player: ^0.10.11+1
   firebase_database: ^3.1.6
   carousel_slider: ^2.1.0
+  cloud_firestore: ^0.13.6
 
 dev_dependencies:
 flutter_test:

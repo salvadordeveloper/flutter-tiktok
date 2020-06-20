@@ -45,19 +45,11 @@ The app obtains the data from a Realtime Database and Firebase Storage, in reali
 
 This is the link of template JSON to import the data in your firebase instance. 
 
-<<<<<<< HEAD
-
-I use Firebase Storage for videos and Profile Pic's, but you can set the URL to any server that you want.
-
-<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Storage.png" alt="drawing" width="500"/>
-
-=======
 [JSON File](https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/data/videoList.json)
 
 I use Firebase Storage for videos and Profile Pic's, but you can set the URL to any server that you want.
 
 <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Storage.png" alt="drawing" width="700"/>
->>>>>>> 0a0e93acaaee0dbed8f22fb5081faf7148c75760
 
 
 ## TODO

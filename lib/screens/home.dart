@@ -19,6 +19,7 @@ class _HomeState extends State<Home> {
   
   var listVideos= <Video>[];
   var prevPage = 0;
+  List<VideoPlayerController> _controllers = [];
 
    @override
   void initState() {
@@ -27,15 +28,29 @@ class _HomeState extends State<Home> {
   }
 
   getVideos() async {
-    var videos = await getVideoList();
-    videos.forEach((element) => element.setupVideo());
+    var videos = await getVideoListForUser('userTest');
 
     setState(() {
       listVideos = videos;
-    });
-
-    listVideos[0].controller.play();
+      listVideos.forEach((element) {
+         _controllers.add(getController(element.url));
+      });
+    }); 
+    if(_controllers.length > 0)
+      _controllers[0].play();
   }
+
+  VideoPlayerController getController(url){
+      VideoPlayerController controller;
+      controller = VideoPlayerController.network(url)
+      ..initialize().then((_) {
+        setState(() {
+            controller.setLooping(true);
+        });
+      });
+      return controller;
+  }
+
 
   Widget get topSection => Container(
       height: 100.0,
@@ -56,49 +71,48 @@ class _HomeState extends State<Home> {
     );
 
   Widget videoViewer(){
+
     return Container(
      child: Center(
-      child: listVideos.length > 0 ? CarouselSlider.builder(
-        options: CarouselOptions(
-        autoPlay: false,
-        height: MediaQuery.of(context).size.height,
-        enlargeCenterPage: false,
-        viewportFraction: 1.0,
-        initialPage: 7,
-        scrollDirection: Axis.vertical,
+      child: listVideos.length > 0 ? PageView.builder(
+         controller: PageController(
+          initialPage: 0,
+          viewportFraction: 1,
+        ),
+        onPageChanged: (index){
+          index = index % (listVideos.length);
+          _controllers[prevPage].pause();
+          _controllers[index].play();
+          prevPage = index;
+          print(index);
 
-        onPageChanged: (index, reason) {
-            setState(() {
-              listVideos[prevPage].controller.pause();
-              listVideos[index].controller.play();
-              prevPage = index;
-            });
         },
-
-      ),
-      itemCount: listVideos.length,
-      itemBuilder: (BuildContext context, int itemIndex) => videoCard(itemIndex)
-        
-    ) : CircularProgressIndicator()   
+        scrollDirection: Axis.vertical,
+        itemBuilder: (context,index){
+          index = index % (listVideos.length);
+          return videoCard(index);
+        },
+    )
+    : CircularProgressIndicator()   
   ));
   }
 
-  Widget videoCard(item){
-    var video = listVideos[item];
-    var controller = video.controller;
+  Widget videoCard(index){
+    var video = listVideos[index];
+    var controller = _controllers[index];
     if(controller != null){
-    return Stack(
+      return Stack(
       alignment: Alignment.bottomCenter,
       children: <Widget>[ 
         GestureDetector(
           onTap: () {
-            setState(() {
               controller.value.isPlaying
                 ? controller.pause()
                 : controller.play();
-            });
+            
+
           },
-          child: 
+          child: controller.value.initialized ?
             SizedBox.expand(
               child: FittedBox(
                 fit: BoxFit.cover,
@@ -109,6 +123,7 @@ class _HomeState extends State<Home> {
                 ),
               )
             )
+            : CircularProgressIndicator()
         ),
         Column(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
           Row(
@@ -119,7 +134,7 @@ class _HomeState extends State<Home> {
                 ActionsToolbar(video.likes,video.comments,video.userPic),
               ],
           ),
-          SizedBox(height: 65,)
+          SizedBox(height: 65)
         ],)
       ],
     );
