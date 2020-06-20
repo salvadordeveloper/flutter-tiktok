@@ -28,12 +28,16 @@ Video Demo: https://youtu.be/sMKg6ILYgv0
 
 1.-Clone or download this repository 
 
-2.-Config your Firebase instance and replace the google-service.json in android/app/ or ios/Runner
+```bash
+git clone https://github.com/salvadordeveloper/TikTok-Flutter.git
+```
+
+2.-Config your Firebase instance and insert the google-service.json in android/app/ or ios/Runner
 
 3.-Config flutter project : 
 
 ```bash
-flutter pug get
+flutter pub get
 ```
 
 ## Database
@@ -63,6 +67,6 @@ I use Firebase Storage for videos and Profile Pic's, but you can set the URL to 
 ## Changelog
 
 19/06/2019 
-- RealTime Database To Firestore
+- Realtime Database To Firestore
 - caroulsel_slider To PageView 
 
