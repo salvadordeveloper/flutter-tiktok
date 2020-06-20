@@ -63,6 +63,6 @@ I use Firebase Storage for videos and Profile Pic's, but you can set the URL to 
 ## Changelog
 
 19/06/2019 
-- Migrated To Firestore
-- Caroulsel to PageView 
+- RealTime Database To Firestore
+- caroulsel_slider To PageView 
 
