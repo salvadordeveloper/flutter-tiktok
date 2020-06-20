@@ -4,9 +4,8 @@ Clone of TikTok with Flutter and Firebase.
 
 ## Preview
 
-<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Database.png" alt="drawing" width="200"/>
+<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/screenshot.png" alt="drawing" width="200"/>
 
--Image -Image
 
 Video Demo: https://youtu.be/sMKg6ILYgv0 
 
