@@ -41,19 +41,13 @@ flutter pub get
 
 ## Database
 
-The app obtains the data from a Realtime Database and Firebase Storage, in reality, you can use the server that you want, only need's an API that returns a JSON in this format.
+The app obtains the data from Firestore and Firebase Storage. The format is Firestore is : 
 
-
-<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Database.png" alt="drawing" width="500"/>
-
-This is the link of template JSON to import the data in your firebase instance. 
-
-[JSON File](https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/data/videoList.json)
+<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/firestore_database.png" alt="drawing" width="500"/>
 
 I use Firebase Storage for videos and Profile Pic's, but you can set the URL to any server that you want.
 
 <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Storage.png" alt="drawing" width="700"/>
-
 
 ## TODO
 
