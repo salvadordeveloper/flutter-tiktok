@@ -60,7 +60,7 @@ I use Firebase Storage for videos and Profile Pic's, but you can set the URL to 
 -Upload Videos from the app
 
 
-##Changelog
+## Changelog
 
 19/06/2019 
 - Migrated To Firestore
