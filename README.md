@@ -58,3 +58,11 @@ I use Firebase Storage for videos and Profile Pic's, but you can set the URL to 
 -Comments.   
 -System of User (Register, Login, Profile Screen).   
 -Upload Videos from the app
+
+
+##Changelog
+
+19/06/2019 
+- Migrated To Firestore
+- Caroulsel to PageView 
+
