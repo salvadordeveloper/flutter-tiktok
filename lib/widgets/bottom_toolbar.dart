@@ -5,7 +5,7 @@ class BottomToolbar extends StatelessWidget {
   static const double NavigationIconSize = 20.0;
   static const double CreateButtonWidth = 38.0;
 
-  Function deleteHistory;
+  final Function deleteHistory;
 
   BottomToolbar(this.deleteHistory);
 

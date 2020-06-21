@@ -31,6 +31,9 @@ dependencies:
   cached_network_image: ^2.2.0+1
   video_player: ^0.10.11+1
   cloud_firestore: ^0.13.6
+  provider: ^4.1.3
+  rxdart: ^0.24.1
+  bloc_pattern: ^2.5.1
 
 dev_dependencies:
 flutter_test:

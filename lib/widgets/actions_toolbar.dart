@@ -19,9 +19,9 @@ class ActionsToolbar extends StatelessWidget {
 // The size of the plus icon under the profile image in follow action
   static const double PlusIconSize = 20.0;
 
-  String numLikes;
-  String numComments;
-  String userPic;
+  final String numLikes;
+  final String numComments;
+  final String userPic;
 
   ActionsToolbar(this.numLikes,this.numComments,this.userPic);
 

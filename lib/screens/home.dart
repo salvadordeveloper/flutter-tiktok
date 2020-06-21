@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_flutter/bloc/videos.bloc.dart';
+import 'package:tiktok_flutter/data/videos_api.dart';
 import 'package:tiktok_flutter/models/video.dart';
 import 'package:tiktok_flutter/widgets/actions_toolbar.dart';
 import 'package:tiktok_flutter/widgets/bottom_toolbar.dart';
@@ -14,57 +16,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  
-  var listVideos= <Video>[];
-  var prevPage = 0;
-  List<VideoPlayerController> _controllers;
+    
+  Stream<List<Video>> listVideos;
+  VideosBloc _videosBloc;
 
-   @override
+  @override
   void initState() {
     super.initState();
-    getVideos();
+    _videosBloc = VideosBloc(VideosAPI());
+    listVideos = _videosBloc.listVideos;
   }
-
-  getVideos() async {
-    var videos = await getVideoListForUser('userTest');
-
-    setState(() {
-      listVideos = videos;
-      _controllers = List<VideoPlayerController>(listVideos.length);
-      loadVideo(0);      
-    }); 
-    if(_controllers.length > 0)
-      _controllers[0].play();
-  }
-
-  loadVideo(index){
-    if(_controllers[index] == null){
-      setState(() {
-        _controllers[index] = getController(listVideos[index].url);
-      });
-    }
-  }
-
-  disposeVideo(index){
-    if(index >= 0){
-      if(_controllers[index] != null)
-        _controllers[index].dispose();
-        _controllers[index] = null;
-    }
-   
-  }
-
-  VideoPlayerController getController(url){
-      VideoPlayerController controller;
-      controller = VideoPlayerController.network(url)
-      ..initialize().then((_) {
-        setState(() {
-            controller.setLooping(true);
-        });
-      });
-      return controller;
-  }
-
 
   Widget get topSection => Container(
       height: 100.0,
@@ -88,34 +49,38 @@ class _HomeState extends State<Home> {
 
     return Container(
      child: Center(
-      child: listVideos.length > 0 ? PageView.builder(
-         controller: PageController(
-          initialPage: 0,
-          viewportFraction: 1,
-        ),
-        onPageChanged: (index){
-          index = index % (listVideos.length);
-          _controllers[prevPage].pause();
-          disposeVideo(prevPage-1);
-          loadVideo(index);
-          _controllers[index].play();
-          prevPage = index;
-          print(index);
-
-        },
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context,index){
-          index = index % (listVideos.length);
-          return videoCard(index);
-        },
-    )
-    : CircularProgressIndicator()   
-  ));
+        child: StreamBuilder(
+          initialData: List<Video>(),
+          stream: listVideos,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (!snapshot.hasData) return CircularProgressIndicator();  
+            List<Video> videos = snapshot.data;
+            if(videos.length > 0){
+            return PageView.builder(
+              controller: PageController(
+                initialPage: 0,
+                viewportFraction: 1,
+              ),
+              onPageChanged: (index){
+                index = index % (videos.length);
+                _videosBloc.videoManager.changeVideo(index);
+              },
+              scrollDirection: Axis.vertical,
+              itemBuilder: (context,index){
+                index = index % (videos.length);
+                return videoCard(_videosBloc.videoManager.listVideos[index]);
+              },
+            );
+          }else{
+            return CircularProgressIndicator();
+          }
+        }
+      )
+    ));
   }
 
-  Widget videoCard(index){
-    var video = listVideos[index];
-    var controller = _controllers[index];
+  Widget videoCard(Video video){
+    var controller = video.controller;
     return Stack(
       alignment: Alignment.bottomCenter,
       children: <Widget>[ 
@@ -186,14 +151,8 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
   @override
   void dispose() {
-    _controllers.forEach((element) {
-      if(element != null){
-        element.dispose();
-      }
-    });
     super.dispose();
   }
 }
