@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:tiktok_flutter/models/video.dart';
 import 'package:tiktok_flutter/screens/home.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoManager {
-
   State<Home> state;
   Function updateController;
 
@@ -16,9 +14,8 @@ class VideoManager {
 
   VideoManager({this.stream});
 
-  changeVideo(index)async{
-
-    int prev = index > prevPage ? index-2 : index +2; 
+  changeVideo(index) async {
+    int prev = index > prevPage ? index - 2 : index + 2;
     listVideos[prevPage].controller.pause();
     prevPage = index;
 
@@ -28,36 +25,37 @@ class VideoManager {
     stream.add(listVideos);
   }
 
-  Video getVideo(index){
+  Video getVideo(index) {
     return listVideos[index];
   }
 
-  VideoPlayerController getController(index){
+  VideoPlayerController getController(index) {
     return listVideos[index].controller;
   }
 
-  playVideo(index){
-    if(listVideos[index].controller != null){
+  playVideo(index) {
+    if (listVideos[index].controller != null) {
       listVideos[index].controller.play();
     }
   }
 
-  pauseVideo(index){
-    if(listVideos[index].controller != null){
+  pauseVideo(index) {
+    if (listVideos[index].controller != null) {
       listVideos[index].controller.pause();
     }
   }
 
-  loadVideo(index)async {
-    if(listVideos[index].controller == null){
-      listVideos[index].controller = await createController(listVideos[index].url);
+  loadVideo(index) async {
+    if (listVideos[index].controller == null) {
+      listVideos[index].controller =
+          await createController(listVideos[index].url);
       stream.add(listVideos);
     }
   }
 
-  disposeVideo(index){
-    if(index >= 0){
-      if(listVideos[index].controller != null){
+  disposeVideo(index) {
+    if (index >= 0) {
+      if (listVideos[index].controller != null) {
         listVideos[index].controller.dispose();
         listVideos[index].controller = null;
       }
@@ -71,19 +69,18 @@ class VideoManager {
     return controller;
   }
 
-  bool hasVideos(){
-    if(listVideos.length > 0)
-      return true;
+  bool hasVideos() {
+    if (listVideos.length > 0) return true;
     return false;
   }
 
-  int numOfVideos(){
+  int numOfVideos() {
     return listVideos.length;
   }
 
-  dispose(){
+  dispose() {
     listVideos.forEach((element) {
-      if(element.controller != null){
+      if (element.controller != null) {
         element.controller.dispose();
       }
     });
