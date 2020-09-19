@@ -15,13 +15,15 @@ class VideoManager {
   VideoManager({this.stream});
 
   changeVideo(index) async {
-    int prev = index > prevPage ? index - 2 : index + 2;
     listVideos[prevPage].controller.pause();
-    prevPage = index;
-
-    disposeVideo(prev);
     await loadVideo(index);
     listVideos[index].controller.play();
+
+    //int prev = index > prevPage ? index - 2 : index + 2;
+    //await disposeVideo(prevPage);
+
+    prevPage = index;
+
     stream.add(listVideos);
   }
 
@@ -53,10 +55,11 @@ class VideoManager {
     }
   }
 
-  disposeVideo(index) {
+  disposeVideo(index) async {
     if (index >= 0) {
-      if (listVideos[index].controller != null) {
-        listVideos[index].controller.dispose();
+      if (listVideos[index].controller != null &&
+          listVideos[index].controller.value.initialized) {
+        await listVideos[index].controller.dispose();
         listVideos[index].controller = null;
       }
     }

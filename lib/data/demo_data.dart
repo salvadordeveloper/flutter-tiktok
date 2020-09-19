@@ -14,7 +14,7 @@ var data = [
     "id": "2",
     "video_title": "Video 2",
     "url":
-        "https://v16.tiktokcdn.com/2a0a8d30d734164b8786f850dc8a29e0/5f1641d7/video/tos/useast2a/tos-useast2a-ve-0068c001/35701cc3d63146b5a55d0af44306896a/",
+        "https://v16m.tiktokcdn.com/408853a67fe461d92c18a2d4a2addc18/5f36c048/video/tos/useast2a/tos-useast2a-ve-0068c002/d7edbf2681564c69b6b4380bbbe1687b/?a=1180&br=4940&bt=2470&cr=0&cs=0&dr=0&ds=6&er=&l=20200812164808010115228061111DB14F&lr=&mime_type=video_mp4&qs=0&rc=ajQ8O3dmO3I3djMzZjczM0ApZ2VoZ2llaGQ7NzczODRoZGdyZnFoX2tfcWhfLS02MTZzc14vLS0zXzQ2XmMzNDBfLV46Yw%3D%3D&vl=&vr=",
     "comments": "143",
     "likes": "3223",
     "song_name": "Song 2 - Artist 2",
@@ -26,7 +26,7 @@ var data = [
     "id": "3",
     "video_title": "Video 3",
     "url":
-        "https://v16m.tiktokcdn.com/4ca13a402903817b4becdca9cd29dc16/5f1633c1/video/tos/useast2a/tos-useast2a-pve-0068/1b92fd6422a54a9dad497608d56dd18d/?a=1233&br=1872&bt=936&cr=0&cs=0&dr=0&ds=3&er=&l=202007201815480101150170071B30A435&lr=tiktok_m&mime_type=video_mp4&qs=0&rc=M2xpO3hvbjtpdTMzOzczM0ApNzM5ZzZlZ2Q7NzZpM2dlZGdqNl5fcnNzLTRfLS01MTZzcy8yMi8uYDFhYWItYWFfYTE6Yw%3D%3D&vl=&vr=",
+        "https://v16m.tiktokcdn.com/47e4f877ad904c806c143c59ac9ebe19/5f36c099/video/tos/useast2a/tos-useast2a-pve-0068/7bb6b970882b4140a30b9b2e036fbc4d/?a=1180&br=2918&bt=1459&cr=0&cs=0&dr=0&ds=6&er=&l=202008121649290101151511011B1DF27A&lr=&mime_type=video_mp4&qs=0&rc=M3lwNDR1ZGdxdTMzNTczM0ApNDNmPDY5Ozs4N2hpOWQ0PGdtcGtwZTZyb2tfLS1eMTZzc15gNjYzMzM2YWIuYDUzYDU6Yw%3D%3D&vl=&vr=",
     "comments": "143",
     "likes": "3223",
     "song_name": "Song 3 - Artist 3",
