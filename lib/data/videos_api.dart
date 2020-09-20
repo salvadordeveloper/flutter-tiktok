@@ -6,18 +6,21 @@ import 'demo_data.dart';
 class VideosAPI {
   VideosAPI();
 
-  Future<List<Video>> getVideoListForUser(String userId) async {
-    var data = await Firestore.instance.collection("Videos").getDocuments();
-
-    if (data.documents.length == 0) {
-      await addDemoData();
-    }
+  Future<List<Video>> getVideoList() async {
+    var data = await FirebaseFirestore.instance.collection("Videos").get();
 
     var videoList = <Video>[];
-    var videos = await Firestore.instance.collection("Videos").getDocuments();
+    var videos;
 
-    videos.documents.forEach((element) {
-      Video video = Video.fromJson(element.data);
+    if (data.docs.length == 0) {
+      await addDemoData();
+      videos = (await FirebaseFirestore.instance.collection("Videos").get());
+    } else {
+      videos = data;
+    }
+
+    videos.docs.forEach((element) {
+      Video video = Video.fromJson(element.data());
       videoList.add(video);
     });
 
@@ -26,28 +29,7 @@ class VideosAPI {
 
   Future<Null> addDemoData() async {
     for (var video in data) {
-      await Firestore.instance.collection("Videos").add(video);
+      await FirebaseFirestore.instance.collection("Videos").add(video);
     }
-  }
-
-  //Working in User System
-  Future<bool> removeVideosFromFeed(
-      String userId, List<String> videoIds) async {
-    await Firestore.instance
-        .collection('Users')
-        .document(userId)
-        .updateData({"videosViewed": FieldValue.arrayUnion(videoIds)});
-    return true;
-  }
-
-  Future<bool> clearHistory(String userId) async {
-    var user =
-        await Firestore.instance.collection('Users').document(userId).get();
-    var listToRemove = user.data['videosViewed'];
-    await Firestore.instance
-        .collection('Users')
-        .document(userId)
-        .updateData({"videosViewed": FieldValue.arrayRemove(listToRemove)});
-    return true;
   }
 }

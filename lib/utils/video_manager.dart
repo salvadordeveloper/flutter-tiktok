@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tiktok_flutter/models/video.dart';
 import 'package:tiktok_flutter/screens/home.dart';
+import 'package:tiktok_flutter/screens/home_viewmodel.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoManager {
@@ -10,9 +13,9 @@ class VideoManager {
   List<Video> listVideos;
   var prevPage = 0;
 
-  Sink<List<Video>> stream;
+  HomeViewModel viewModel;
 
-  VideoManager({this.stream});
+  VideoManager(this.viewModel);
 
   changeVideo(index) async {
     listVideos[prevPage].controller.pause();
@@ -20,11 +23,13 @@ class VideoManager {
     listVideos[index].controller.play();
 
     //int prev = index > prevPage ? index - 2 : index + 2;
-    //await disposeVideo(prevPage);
+
+    if (Platform.isAndroid) {
+      //await disposeVideo(prevPage);
+    }
 
     prevPage = index;
-
-    stream.add(listVideos);
+    viewModel.notifyListeners();
   }
 
   Video getVideo(index) {
@@ -51,7 +56,6 @@ class VideoManager {
     if (listVideos[index].controller == null) {
       listVideos[index].controller =
           await createController(listVideos[index].url);
-      stream.add(listVideos);
     }
   }
 

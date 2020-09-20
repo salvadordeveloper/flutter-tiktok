@@ -64,7 +64,6 @@ class _HomeState extends State<Home> {
   }
 
   Widget videoCard(Video video) {
-    print(video);
     var controller = video.controller;
     return Stack(
       alignment: Alignment.bottomCenter,
@@ -140,6 +139,7 @@ class _HomeState extends State<Home> {
 
   @override
   void dispose() {
+    homeModel.videosManager.dispose();
     super.dispose();
   }
 }
