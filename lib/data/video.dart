@@ -12,7 +12,8 @@ class Video {
 
   VideoPlayerController controller;
 
-  Video({this.id,
+  Video(
+      {this.id,
       this.user,
       this.userPic,
       this.videoTitle,
@@ -45,10 +46,9 @@ class Video {
     return data;
   }
 
-  setupVideo(){
-    controller = VideoPlayerController.network(url)
-    ..initialize().then((_) {
-      controller.setLooping(true);
-    });
+  Future<Null> loadController() async {
+    controller = VideoPlayerController.network(url);
+    await controller.initialize();
+    controller.setLooping(true);
   }
 }

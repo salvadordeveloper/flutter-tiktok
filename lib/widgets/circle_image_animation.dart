@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CircleImageAnimation extends StatefulWidget {
-  CircleImageAnimation({Key key,this.child}) : super(key: key);
+  CircleImageAnimation({Key key, this.child}) : super(key: key);
 
-  final Widget child; 
+  final Widget child;
 
   @override
   _CircleImageAnimationState createState() => _CircleImageAnimationState();
 }
 
-class _CircleImageAnimationState extends State<CircleImageAnimation> with TickerProviderStateMixin{
-
+class _CircleImageAnimationState extends State<CircleImageAnimation>
+    with TickerProviderStateMixin {
   AnimationController _controller;
 
   @override
@@ -30,12 +30,11 @@ class _CircleImageAnimationState extends State<CircleImageAnimation> with Ticker
     _controller.dispose();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return RotationTransition(
-      turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
-      child: widget.child
-    );
+        turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
+        child: widget.child);
   }
 }
