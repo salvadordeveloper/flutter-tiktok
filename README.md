@@ -1,11 +1,20 @@
 # TikTok Flutter
 
+<p align="center">
+
+  <img alt="shields.io" src="https://img.shields.io/github/license/salvadordeveloper/TikTok-Flutter" />
+  <img alt="shields.io" src="https://img.shields.io/github/issues/salvadordeveloper/TikTok-Flutter" />
+  <img alt="shields.io" src="https://img.shields.io/github/stars/salvadordeveloper/TikTok-Flutter?style=social" />
+  <img alt="shields.io" src="https://img.shields.io/youtube/views/sMKg6ILYgv0?style=social" />
+</p>
 Clone of TikTok with Flutter and Firebase.
 
 ## Preview
 
-<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/screenshot.png" alt="drawing" width="200"/>
+<p align="center">
 
+<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/screenshot.png" alt="drawing" width="200"/>
+</P
 Video Demo: https://youtu.be/sMKg6ILYgv0 
 
 ## Caracteristics 
