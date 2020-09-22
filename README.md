@@ -17,7 +17,7 @@
 </P
 <br>
 <p align="center">
-    <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/tiktok.gif" alt="drawing" width="400"/>
+    <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/tiktok.gif" alt="drawing" />
 </P
 Video Demo: https://youtu.be/sMKg6ILYgv0 
 
