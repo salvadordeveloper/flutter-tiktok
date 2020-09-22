@@ -21,7 +21,6 @@
     <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/1.png" alt="drawing"   width="170"/>
     <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/2.png" alt="drawing"   width="170"/>
     <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/3.png" alt="drawing"   width="170"/>
-    <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/4.png" alt="drawing"   width="170"/>
     <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/5.png" alt="drawing"   width="170"/>
 
 </p>
