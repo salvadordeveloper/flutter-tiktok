@@ -15,7 +15,6 @@
 <br/>
 <p align="center">
     <img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/tiktok.gif" alt="drawing" />
-
 </p>
 
 <p align="center">
@@ -59,13 +58,9 @@ flutter pub get
 
 ## Database
 
-The app obtains the data from Firestore and Firebase Storage. The format is Firestore is : 
+The app obtains the data from Firestore and Firebase Storage.
 
-<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/database.png" alt="drawing" width="500"/>
-
-I use Firebase Storage for videos and Profile Pic's, but you can set the URL to any server that you want.
-
-<img src="https://raw.githubusercontent.com/salvadordeveloper/TikTok-Flutter/master/images/Storage.png" alt="drawing" width="700"/>
+You can upload your videos to Firebase Storage or any site you want, you only need the link of the source, then configure the archive lib/data/demo_data.dart with the list of your videos, this data going to be automatically saved in your Firestore instance.
 
 ## TODO
 
@@ -84,5 +79,14 @@ I use Firebase Storage for videos and Profile Pic's, but you can set the URL to 
 21/06/2020
 - Bloc Pattern
 - VideoManager
+- Performace Improvements.
+
+22/07/2020
+- Change Bloc to Locator with GetIt 
+- Solved problems with iOS 
+- Better UI
+- Screens Added
+- Clean Code
+- Videos from file
 - Performace Improvements.
 
