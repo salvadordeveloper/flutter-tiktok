@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CircleImageAnimation extends StatefulWidget {
-  CircleImageAnimation({Key key, this.child}) : super(key: key);
+  CircleImageAnimation({Key? key, this.child}) : super(key: key);
 
-  final Widget child;
+  final Widget? child;
 
   @override
   _CircleImageAnimationState createState() => _CircleImageAnimationState();
@@ -11,7 +11,7 @@ class CircleImageAnimation extends StatefulWidget {
 
 class _CircleImageAnimationState extends State<CircleImageAnimation>
     with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {

@@ -42,7 +42,8 @@ class ActionsToolbar extends StatelessWidget {
     );
   }
 
-  Widget _getSocialAction({String title, IconData icon, bool isShare = false}) {
+  Widget _getSocialAction(
+      {required String title, required IconData icon, bool isShare = false}) {
     return Container(
         margin: EdgeInsets.only(top: 15.0),
         width: 60.0,
@@ -60,7 +61,7 @@ class ActionsToolbar extends StatelessWidget {
         ]));
   }
 
-  Widget _getFollowAction({String pictureUrl}) {
+  Widget _getFollowAction({required String pictureUrl}) {
     return Container(
         margin: EdgeInsets.symmetric(vertical: 10.0),
         width: 60.0,
@@ -110,10 +111,10 @@ class ActionsToolbar extends StatelessWidget {
   }
 
   LinearGradient get musicGradient => LinearGradient(colors: [
-        Colors.grey[800],
-        Colors.grey[900],
-        Colors.grey[900],
-        Colors.grey[800]
+        Colors.grey[800]!,
+        Colors.grey[900]!,
+        Colors.grey[900]!,
+        Colors.grey[800]!
       ], stops: [
         0.0,
         0.4,

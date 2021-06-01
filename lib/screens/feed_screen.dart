@@ -14,7 +14,7 @@ import 'package:stacked/stacked.dart';
 import 'package:video_player/video_player.dart';
 
 class FeedScreen extends StatefulWidget {
-  FeedScreen({Key key}) : super(key: key);
+  FeedScreen({Key? key}) : super(key: key);
 
   @override
   _FeedScreenState createState() => _FeedScreenState();
@@ -452,15 +452,15 @@ class _FeedScreenState extends State<FeedScreen> {
             initialPage: 0,
             viewportFraction: 1,
           ),
-          itemCount: feedViewModel.videoSource.listVideos.length,
+          itemCount: feedViewModel.videoSource?.listVideos.length,
           onPageChanged: (index) {
-            index = index % (feedViewModel.videoSource.listVideos.length);
+            index = index % (feedViewModel.videoSource!.listVideos.length);
             feedViewModel.changeVideo(index);
           },
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            index = index % (feedViewModel.videoSource.listVideos.length);
-            return videoCard(feedViewModel.videoSource.listVideos[index]);
+            index = index % (feedViewModel.videoSource!.listVideos.length);
+            return videoCard(feedViewModel.videoSource!.listVideos[index]);
           },
         ),
         SafeArea(
@@ -519,26 +519,26 @@ class _FeedScreenState extends State<FeedScreen> {
         video.controller != null
             ? GestureDetector(
                 onTap: () {
-                  if (video.controller.value.isPlaying) {
-                    video.controller.pause();
+                  if (video.controller!.value.isPlaying) {
+                    video.controller?.pause();
                   } else {
-                    video.controller.play();
+                    video.controller?.play();
                   }
                 },
                 child: SizedBox.expand(
                     child: FittedBox(
                   fit: BoxFit.cover,
                   child: SizedBox(
-                    width: video.controller.value.size?.width ?? 0,
-                    height: video.controller.value.size?.height ?? 0,
-                    child: VideoPlayer(video.controller),
+                    width: video.controller?.value.size.width ?? 0,
+                    height: video.controller?.value.size.height ?? 0,
+                    child: VideoPlayer(video.controller!),
                   ),
                 )),
               )
             : Container(
                 color: Colors.black,
                 child: Center(
-                  child: Text("Loadingd123"),
+                  child: Text("Loading"),
                 ),
               ),
         Column(
@@ -562,7 +562,7 @@ class _FeedScreenState extends State<FeedScreen> {
 
   @override
   void dispose() {
-    feedViewModel.controller.dispose();
+    feedViewModel.controller?.dispose();
     super.dispose();
   }
 }

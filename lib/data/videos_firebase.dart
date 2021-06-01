@@ -3,7 +3,7 @@ import 'package:tiktok_flutter/data/demo_data.dart';
 import 'package:tiktok_flutter/data/video.dart';
 
 class VideosAPI {
-  List<Video> listVideos = List<Video>();
+  List<Video> listVideos = <Video>[];
 
   VideosAPI() {
     load();

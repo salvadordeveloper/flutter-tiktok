@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>655078518888-36crcakl0ggnp6999a1278ssds8rr8f4.apps.googleusercontent.com</string>
+	<string>655078518888-fep0ull2smpnvtsirchfk59dltsb6ndj.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.655078518888-36crcakl0ggnp6999a1278ssds8rr8f4</string>
+	<string>com.googleusercontent.apps.655078518888-fep0ull2smpnvtsirchfk59dltsb6ndj</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCfDnDorMHAB3k7sLVDoiVS4Qm7D0W2Fic</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.tiktok</string>
+	<string>com.demo.tiktok</string>
 	<key>PROJECT_ID</key>
 	<string>videostreaming-test</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:655078518888:ios:3eeb5b54932cc3d7d88bdd</string>
+	<string>1:655078518888:ios:1415fe708ef37b9fd88bdd</string>
 	<key>DATABASE_URL</key>
 	<string>https://videostreaming-test.firebaseio.com</string>
 </dict>
